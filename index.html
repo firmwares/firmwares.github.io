@@ -18,6 +18,7 @@
             full: window.location
         })
         socket.on('html', element => {
+            console.log(element)
             $('#main').append(element);
         })
     </script>
