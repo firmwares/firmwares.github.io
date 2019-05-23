@@ -23,7 +23,7 @@
         window.onhashchange = sendPATH;
         socket.on('html', element => {
             console.log(element)
-            $('#main').append(element);
+            $('#main').empty().append(element);
         })
     </script>
 </body>
