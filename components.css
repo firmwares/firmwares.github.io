@@ -1,0 +1,11 @@
+nav.navbar {
+    padding: 1rem;
+}
+a.navbar-brand {
+    font-weight: 500;
+    font-size: 15px;
+}
+ul.navbar-nav, div.dropdown-menu {
+    font-size: .8rem;
+    font-weight: 500;
+}
