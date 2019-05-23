@@ -14,9 +14,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
     <script>
         const socket = io('http://localhost:3000');
-        socket.on('connect', () => {
+        var sendPATH = () => {
             socket.emit('path', window.location.hash)
+        }
+        socket.on('connect', () => {
+            sendPATH();
         })
+        window.onhashchange = sendPATH;
         socket.on('html', element => {
             console.log(element)
             $('#main').append(element);
