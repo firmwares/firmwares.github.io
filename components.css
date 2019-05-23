@@ -1,6 +1,12 @@
 nav.navbar {
     padding: 1rem;
 }
+button.navbar-toggler {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0 .05rem;
+}
 a.navbar-brand {
     font-weight: 500;
     font-size: 15px;
