@@ -18,7 +18,7 @@
             socket.emit('path', window.location.hash)
         })
         socket.on('html', element => {
-            console.log('true')
+            console.log(element)
             $('#main').append(element);
         })
     </script>
