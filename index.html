@@ -71,7 +71,7 @@
         };
         firebase.initializeApp(firebaseConfig);
 
-        var app = functions.functions().httpsCallable('app');
+        var app = firebase.functions().httpsCallable('app');
         app({ok: true}).then(function (result) {
             console.log(result)
         }).catch(function (error) {
