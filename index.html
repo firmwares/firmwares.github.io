@@ -76,7 +76,7 @@
         firebase.initializeApp(firebaseConfig);
 
         var functions = firebase.functions();
-        var addMessage = firebase.functions().httpsCallable('app');
+        var app = firebase.functions().httpsCallable('app');
         app('test').then(function (result) {
             console.log(result)
         }).catch(function (error) {
