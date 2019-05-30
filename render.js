@@ -1,6 +1,6 @@
 var firebaseConfig = {
     apiKey: "AIzaSyDDbJBz5RY5so4UoYNBIqr2nQob1ROnrKs",
-    authDomain: "firmwares-github.firebaseapp.com",
+    authDomain: "firmwares.github.io",
     databaseURL: "https://firmwares-github.firebaseio.com",
     projectId: "firmwares-github",
     storageBucket: "firmwares-github.appspot.com",
@@ -21,15 +21,7 @@ app({ ok: true }).then(function (result) {
 });
 */
 
-firebase.auth().signInAnonymously().then(user => {
-    if (user.additionalUserInfo.isNewUser) {
-        grecaptcha.ready(function() {
-            grecaptcha.execute('6LflPKYUAAAAABzbRgT1-SC8lVMJaQzT6_iNh-sQ', {action: 'homepage'}).then((token) => {
-               console.log(token)
-            });
-        });
-    }
-}).catch((error) => {
+firebase.auth().signInAnonymously().catch((error) => {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
@@ -41,7 +33,11 @@ firebase.auth().onAuthStateChanged(user => {
         // User is signed in.
         var isAnonymous = user.isAnonymous;
         var uid = user.uid;
-        console.log(user.toJSON())
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LflPKYUAAAAABzbRgT1-SC8lVMJaQzT6_iNh-sQ', {action: 'homepage'}).then((token) => {
+               console.log(token)
+            });
+        });
         // ...
     } else {
         // User is signed out.
