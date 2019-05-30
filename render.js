@@ -38,7 +38,9 @@ firebase.auth().onAuthStateChanged(user => {
                 var render = functions.httpsCallable('render');
                 render({ token: token }).then(function (result) {
                     console.log(result)
-                });
+                }).catch(err => {
+                    console.log(err)
+                })
             });
         });
         // ...
