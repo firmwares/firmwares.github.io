@@ -33,7 +33,7 @@ firebase.auth().onAuthStateChanged(user => {
         // User is signed in.
         var isAnonymous = user.isAnonymous;
         var uid = user.uid;
-        console.log(user.toJson())
+        console.log(user.toJSON())
         // ...
     } else {
         // User is signed out.
