@@ -28,16 +28,15 @@ firebase.auth().signInAnonymously().catch((error) => {
     // ...
 });
 
-firebase.auth().onAuthStateChanged(function (user) {
+firebase.auth().onAuthStateChanged(user => {
     if (user) {
         // User is signed in.
         var isAnonymous = user.isAnonymous;
         var uid = user.uid;
+        console.log(user)
         // ...
     } else {
         // User is signed out.
         // ...
     }
-    console.log(isAnonymous)
-    console.log(uid)
 });
