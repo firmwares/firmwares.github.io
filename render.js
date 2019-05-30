@@ -20,6 +20,7 @@ app({ ok: true }).then(function (result) {
     // ...
 });
 */
+const functions = firebase.functions();
 firebase.auth().signInAnonymously().catch((error) => {
     // Handle Errors here.
     var errorCode = error.code;
@@ -32,19 +33,17 @@ firebase.auth().onAuthStateChanged(user => {
         // User is signed in.
         var isAnonymous = user.isAnonymous;
         var uid = user.uid;
-        
+        grecaptcha.ready(function () {
+            grecaptcha.execute('6LflPKYUAAAAABzbRgT1-SC8lVMJaQzT6_iNh-sQ', { action: 'validate' }).then((token) => {
+                var render = functions.httpsCallable('render');
+                render({ token: token }).then(function (result) {
+                    console.log(result)
+                });
+            });
+        });
         // ...
     } else {
         // User is signed out.
         // ...
     }
-});
-
-grecaptcha.ready(function () {
-    grecaptcha.execute('6LflPKYUAAAAABzbRgT1-SC8lVMJaQzT6_iNh-sQ', { action: 'validate' }).then((token) => {
-        var render = firebase.functions().httpsCallable('render');
-        render({ token: token }).then(function (result) {
-            console.log(result)
-        }).catch(err => { console.log(err) })
-    });
 });
