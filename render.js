@@ -20,7 +20,6 @@ app({ ok: true }).then(function (result) {
     // ...
 });
 */
-const functions = firebase.functions();
 firebase.auth().signInAnonymously().catch((error) => {
     // Handle Errors here.
     var errorCode = error.code;
@@ -35,11 +34,11 @@ firebase.auth().onAuthStateChanged(user => {
         var uid = user.uid;
         grecaptcha.ready(function () {
             grecaptcha.execute('6LflPKYUAAAAABzbRgT1-SC8lVMJaQzT6_iNh-sQ', { action: 'validate' }).then((token) => {
-                var render = functions.httpsCallable('render');
-                render({ token: token }).then(function (result) {
-                    console.log(result)
-                }).catch(err => {
-                    console.log(err)
+                axios.post('https://us-central1-firmwares-github.cloudfunctions.net/app', {
+                    token: token,
+                    uid: uid
+                }).then(response => {
+                    console.log(response)
                 })
             });
         });
