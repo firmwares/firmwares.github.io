@@ -34,7 +34,7 @@ firebase.auth().onAuthStateChanged(user => {
         var uid = user.uid;
         grecaptcha.ready(function () {
             grecaptcha.execute('6LflPKYUAAAAABzbRgT1-SC8lVMJaQzT6_iNh-sQ', { action: 'validate' }).then((token) => {
-                axios.post('https://us-central1-firmwares-github.cloudfunctions.net/app', {
+                axios.post('https://us-central1-firmwares-github.cloudfunctions.net/app/authBoot', {
                     token: token,
                     uid: uid
                 }).then(response => {
