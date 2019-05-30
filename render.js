@@ -35,12 +35,7 @@ firebase.auth().onAuthStateChanged(user => {
         var uid = user.uid;
         grecaptcha.ready(function () {
             grecaptcha.execute('6LflPKYUAAAAABzbRgT1-SC8lVMJaQzT6_iNh-sQ', { action: 'validate' }).then((token) => {
-                var render = functions.httpsCallable('render');
-                render({ token: token }).then(function (result) {
-                    console.log(result)
-                }).catch(err => {
-                    console.log(err)
-                })
+                console.log(token)
             });
         });
         // ...
