@@ -18,7 +18,9 @@ app({ ok: true }).then(function (result) {
 });
 */
 
-firebase.auth().signInAnonymously().catch((error) => {
+firebase.auth().signInAnonymously().then(user => {
+    console.log(user)
+}).catch((error) => {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
