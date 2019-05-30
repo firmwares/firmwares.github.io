@@ -1,10 +1,7 @@
 var firebaseConfig = {
     apiKey: "AIzaSyDDbJBz5RY5so4UoYNBIqr2nQob1ROnrKs",
-    authDomain: "firmwares-github.firebaseapp.com",
-    databaseURL: "https://firmwares-github.firebaseio.com",
+    authDomain: "firmwares.github.io",
     projectId: "firmwares-github",
-    storageBucket: "firmwares-github.appspot.com",
-    messagingSenderId: "753178353480",
     appId: "1:753178353480:web:f3e862d355bd6e38"
 };
 firebase.initializeApp(firebaseConfig);
